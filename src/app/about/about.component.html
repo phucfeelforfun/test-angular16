@@ -1,0 +1,16 @@
+<p>about works!</p>
+<input type="radio" name="chose" [(ngModel)]="login" value="user">
+<label for="user">user</label>
+
+<input type="radio" name="chose" [(ngModel)]="login" value="admin">
+<label for="admin">admin</label>
+
+<ul [ngSwitch]="login">
+  <li *ngSwitchCase=" 'user' ">
+  <p>this is user</p>
+</li>
+<li *ngSwitchCase=" 'admin' ">
+  <p>this is admin</p>
+  <app-home></app-home>
+</li>
+</ul>
