@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="card d-flex mt-4">
+  <div class="card-header">
+    <h4>Student
+      <a routerLink="/" class="btn btn-primary float-end">Back</a>
+    </h4>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="saveStudent()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label" >Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="name" name="name">
+        <span *ngIf="errors.name" class="text-danger">{{errors.name}}</span>
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Course</label>
+        <input type="text" class="form-control"   [(ngModel)]="course" name="course">
+        <span *ngIf="errors.course" class="text-danger">{{errors.course}}</span>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Email</label>
+        <input type="text" class="form-control"   [(ngModel)]="email" name="email">
+        <span *ngIf="errors.email" class="text-danger">{{errors.email}}</span>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Phone</label>
+        <input type="text" class="form-control"  [(ngModel)]="phone" name="phone">
+        <!-- <span *ngIf="errors.phone" class="text-danger">{{errors.phone}}</span> -->
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,38 @@
+<p>home works!</p>
+<h2 *ngIf="num > 15">if over 15</h2>
+<h2 *ngIf="num <= 15">of under 15</h2>
+<input type="text" [(ngModel)]="user"/>
+<h2>chao ban {{ name }}</h2>
+<button (click)="setname()">set name</button>
+<button (click)="resetname()">reset name</button>
+<div class="test-table">
+  <table>
+    <tr>
+      <th>thứ tự</th>
+      <th>Tên</th>
+      <th>giá</th>
+      <th>đang hạ giá </th>
+    </tr>
+    <tr *ngFor="let trai of traicay; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{trai.ten}}</td>
+      <td>
+        <span [ngClass]="{'so-am': trai.gia < 0}">{{trai.gia}}</span>
+      </td>
+      <td >
+        <span>{{trai.hagia | onSale |uppercase }}</span>
+      </td>
+
+    </tr>
+  </table>
+</div>
+<select name="city" (change)="changeCity($event)">
+  <option *ngFor="let city of cities" value="{{city.city}}">
+    {{city.city}}
+  </option>
+</select>
+<select name="" id="">
+  <option *ngFor="let district of distrists" value="{{district}}">
+    {{district}}
+  </option>
+</select>
