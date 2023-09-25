@@ -1,14 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+export interface studentResponse {
+  id: number,
+  name: string,
+  email: string
+}
+export interface studentResponseType {
+  status : number,
+  students : studentResponse[]
+}
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
   constructor(private httpClient: HttpClient) { }
-  saveStudent(inputData: object){
+getStudents(studentId:number){
+  return this.httpClient.get(`https://6508220a56db83a34d9bcd6d.mockapi.io/student/${studentId}`)
+}
+  getStudent(){
+    return this.httpClient.get<studentResponseType>(`https://6508220a56db83a34d9bcd6d.mockapi.io/student`)
+  }
+  saveStudent(inputData:any){
 
     return this.httpClient.post(`https://6508220a56db83a34d9bcd6d.mockapi.io/student`,inputData)
+  }
+  updateStudent(data:object,id:number){
+    return this.httpClient.put(`https://6508220a56db83a34d9bcd6d.mockapi.io/student/${id}`,data)
+  }
+  deleteStudent(id:number){
+    return this.httpClient.delete(`https://6508220a56db83a34d9bcd6d.mockapi.io/student/${id}`);
   }
 }
