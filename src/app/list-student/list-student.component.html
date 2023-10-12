@@ -17,8 +17,11 @@
           <tr>
             <th class="Action">Action</th>
             <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Loại</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>hình ảnh</th>
 
           </tr>
         </thead>
@@ -41,8 +44,12 @@
               </nz-dropdown-menu>
             </td>
             <td>{{ item.id }}</td>
+            <td>{{ item.type }}</td>
             <td>{{ item.name }}</td>
-            <td>{{ item.email }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.num }}</td>
+            <td><img [src]="item.preview" alt=""></td>
+
 
           </tr>
         </tbody>

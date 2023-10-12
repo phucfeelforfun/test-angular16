@@ -1,45 +1,132 @@
 <div class="container mt-4">
   <div class="card d-flex mt-4">
-  <div class="card-header">
-    <h4>Student
-      <a (click)="backClicked()" class="btn btn-primary float-end btn-danger">Back</a>
-    </h4>
+    <div class="card-header">
+      <h4>Student
+        <a (click)="backClicked()" class="btn btn-primary float-end btn-danger">Back</a>
+      </h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formData" (ngSubmit)="saveStudent()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Loại tranh</label>
+          <input type="text" formControlName="type" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['type'].errors }" />
+          <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
+            <div *ngIf="f['type'].errors['required']">Yêu cầu nhập loại tranh</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Tên tranh</label>
+          <input type="text" formControlName="name" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Yêu cầu nhập tên tranh</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-10">
+            <label for="exampleInputPassword1" class="form-label">Giá tranh</label>
+            <input type="text" class="form-control" formControlName="price" placeholder="1.000.000"
+              [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" name="email">
+            <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+              <div *ngIf="f['price'].errors['required']">Yêu cầu nhập giá của tranh</div>
+            </div>
+          </div>
+
+          <div class="mb-3 col-2">
+            <label for="exampleInputPassword1" class="form-label">Số lượng</label>
+            <input type="number" class="form-control" class="form-control" formControlName="num"
+              [ngClass]="{ 'is-invalid': submitted && f['num'].errors }" name="email">
+            <div *ngIf="submitted && f['num'].errors" class="invalid-feedback">
+              <div *ngIf="f['num'].errors['required']">Yêu cầu nhập số lượng</div>
+            </div>
+          </div>
+          <div class="mb-3 ">
+            <!-- <label for="exampleInputPassword1" >Chọn tranh</label>
+                      <input type="file" accept=".jpg, .png, .gif" class="form-control"
+                      formControlName="preview"
+                                  (change)="selectFile($event)"
+                                  enctype="multipart/form-data"
+                          [ngClass]="{ 'is-invalid': submitted && f['preview'].errors }" name="email">
+                          <img class="w-25 mt-2" [src]="preview" alt=""> -->
+            <div class="clearfix">
+              <nz-upload
+
+              nzListType="picture-card"
+              [(nzFileList)]="fileList"
+              [nzShowButton]="fileList.length < 1"
+              [nzLimit]="1"
+              [nzPreview]="handlePreview"
+                >
+                <div>
+                  <span nz-icon nzType="plus"></span>
+                  <div style="margin-top: 8px">Upload</div>
+                </div>
+              </nz-upload>
+              <nz-modal
+              [nzVisible]="previewVisible"
+              [nzContent]="modalContent"
+              [nzFooter]="null"
+              (nzOnCancel)="previewVisible = false">
+                <ng-template #modalContent>
+                  <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                </ng-template>
+              </nz-modal>
+              <div *ngIf="submitted && f['preview'].errors" class="invalid-feedback">
+                <div *ngIf="f['preview'].errors['required']">Yêu cầu chọn tranh</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="mb-3 ">
+            <input type="checkbox" class="form-check-input border border-dark me-2 check-add" id="validationFormCheck1"
+              (click)="toggleSaleEventVisibility()">
+            <label class="form-check-label text-black text-center" for="validationFormCheck1 ">Event
+              sale</label>
+            <div class="mt-3 mb-3 row " *ngIf="isSaleEventVisible">
+              <div class="input-group w-50">
+                <span class="input-group-text" id="basic-addon3">bắt đầu</span>
+                <input type="datetime-local" class="form-control" id="basic-url"
+                  aria-describedby="basic-addon3 basic-addon4" formControlName="fromdate"
+                  [ngClass]="{ 'is-invalid': submitted && f['fromdate'].errors }">
+                <div *ngIf="submitted && f['fromdate'].errors" class="invalid-feedback">
+                  <div *ngIf="f['fromdate'].errors['required']">Yêu cầu nhập ngày</div>
+                </div>
+              </div>
+              <div class="input-group w-50">
+                <span class="input-group-text" id="basic-addon3">kết thúc</span>
+                <input type="datetime-local" class="form-control" id="basic-url"
+                  aria-describedby="basic-addon3 basic-addon4" formControlName="enddate"
+                  [ngClass]="{ 'is-invalid': submitted && f['enddate'].errors }">
+                <div *ngIf="submitted && f['enddate'].errors" class="invalid-feedback">
+                  <div *ngIf="f['enddate'].errors['required']">Yêu cầu nhập ngày</div>
+                </div>
+              </div>
+              <div class="input-group w-25 mt-3">
+                <span class="input-group-text" id="basic-addon3">Tỉ lệ %</span>
+                <input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4"
+                  formControlName="per" [ngClass]="{ 'is-invalid': submitted && f['per'].errors }">
+                <div *ngIf="submitted && f['per'].errors" class="invalid-feedback">
+                  <div *ngIf="f['per'].errors['required']">Yêu cầu tỉ lệ %</div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
-  <div class="card-body">
-    <form [formGroup]="formData" (ngSubmit)="saveStudent()">
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label" >Name</label>
-        <input
-        type="text"
-        formControlName="name"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
-      />
-        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-          <div *ngIf="f['name'].errors['required']">Fullname is required</div>
-        </div>
-      </div>
 
-
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="text" class="form-control" formControlName="email"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" name="email">
-        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-          <div *ngIf="f['email'].errors['required']">Email is required</div>
-          <div *ngIf="f['email'].errors['email']">Email is invalid</div>
-        </div>
-        </div>
-
-      <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
+  <div *ngIf="isLoading">
+    <div class="spinner-border">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </div>
-</div>
-<div *ngIf="isLoading">
-        <div class="spinner-border" >
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
 </div>

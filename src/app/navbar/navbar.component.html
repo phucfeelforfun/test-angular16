@@ -1,25 +1,35 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
+<nav class="navbar navbar-expand-lg  shadow p-0" style="background-color: #322f30;">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">Angular</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand p-0" routerLink="/"><img class="logo" src="./assets/images/logo.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active"  routerLink="student-list">Student</a>
+          <a class="nav-link active text-light fs-5" routerLink="student-list">Student</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active"  routerLink="home">Home</a>
+          <a class="nav-link active text-light fs-5" routerLink="home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active"  routerLink="about">About Us</a>
+          <a class="nav-link active text-light fs-5" routerLink="about">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active"  routerLink="page not found">none</a>
+          <a class="nav-link active text-light fs-5" routerLink="page not found">none</a>
         </li>
-
       </ul>
+      <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto">
+        <li class="nav-item ms-auto">
+          <i class="fa-solid fa-magnifying-glass me-3 " style="color: #ffffff;"></i>
+        </li>
+        <li class="nav-item ">
+          <i class="fa-brands fa-opencart " style="color: #ffffff;"></i>
+        </li>
+      </ul>
+
+
 
     </div>
   </div>

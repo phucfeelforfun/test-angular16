@@ -1,8 +1,7 @@
 <p>home works!</p>
 <h2 *ngIf="num > 15">if over 15</h2>
 <h2 *ngIf="num <= 15">of under 15</h2>
-<input type="text" [(ngModel)]="user"/>
-<h2>chao ban {{ name }}</h2>
+<app-home-homename (users)="getUsers($event)" [name]="namePar" [user]="userPar"></app-home-homename>
 <button (click)="setname()">set name</button>
 <button (click)="resetname()">reset name</button>
 <div class="test-table">

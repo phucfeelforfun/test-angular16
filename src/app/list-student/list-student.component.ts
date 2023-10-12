@@ -23,6 +23,8 @@ export class ListStudentComponent {
     this.studentService.getStudent().subscribe((res:any)=>{
 
       this.students=res;
+      console.log(this.students);
+
       this.isLoading=false
 
 

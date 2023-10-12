@@ -27,10 +27,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-
 // Import what you need. RECOMMENDED. ✔️
 import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
-
+import { HomeHomenameComponent } from './home/home-homename/home-homename.component';
+import { SortProdComponent } from './sort-prod/sort-prod.component';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
 registerLocaleData(vi);
@@ -44,7 +46,10 @@ registerLocaleData(vi);
     NavbarComponent,
     CreaterStudentComponent,
     ListStudentComponent,
-    StudentEditComponent
+    StudentEditComponent,
+    HomeHomenameComponent,
+    SortProdComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -62,6 +67,9 @@ registerLocaleData(vi);
     NzDropDownModule,
     NzIconModule,
     NzIconModule.forRoot(icons),
+    NzUploadModule,
+    NzAlertModule
+
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN }

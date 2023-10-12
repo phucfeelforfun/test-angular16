@@ -3,8 +3,15 @@ import { Injectable } from '@angular/core';
 
 export interface studentResponse {
   id: number,
+  type: string,
   name: string,
-  email: string
+  price: number,
+  num:number,
+  preview: string,
+
+  fromdate: string,
+  enddate: string,
+  per: number,
 }
 export interface studentResponseType {
   status : number,

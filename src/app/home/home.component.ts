@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +7,23 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   public num = 12;
-  public name = '';
-  public user = '';
+  namePar = '';
+   userPar = '';
+   getUsers(name:string){
+    this.userPar = name;
+
+   }
+   public setname( ): void {
+    this.namePar = this.userPar;
+    console.log(this.namePar);
+
+
+  }
+  public resetname(): void {
+    console.log(this.userPar);
+    this.namePar = '';
+    this.userPar ='';
+  }
   public distrists=["chose district"];
   public cities = [
     {
@@ -35,18 +50,14 @@ export class HomeComponent {
     { ten: 'oi', gia: 12, hagia: true },
   ]
 
-  public setname(): void {
-    console.log(this.user);
-    this.name = this.user;
-  }
-  public resetname(): void {
-    console.log(this.user);
-    this.name = '';
-    this.user ='';
-  }
+
   public changeCity(event: any){
 
     const city = event.target.value;
     this. distrists = this.cities.find(data => data.city ===city)?.district || [];
   }
+
+
+
+
 }
