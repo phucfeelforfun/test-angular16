@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CreaterStudentComponent } from './creater-student/creater-student.component';
 import { HttpClientModule, HttpContext } from '@angular/common/http';
+import { WorkComponent } from './work/work.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HttpClientModule, HttpContext } from '@angular/common/http';
     PageNotFoundComponent,
     AboutComponent,
     NavbarComponent,
-    CreaterStudentComponent
+    CreaterStudentComponent,
+    WorkComponent
   ],
   imports: [
     BrowserModule,

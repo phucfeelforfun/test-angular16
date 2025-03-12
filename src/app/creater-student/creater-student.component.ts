@@ -29,11 +29,17 @@ export class CreaterStudentComponent {
     }
     this.studentService.saveStudent(inputDat).subscribe({
       next: (res: any)=>{
-        console.log(res,'response')},
+        console.log(res,'response');
+        
+        this.name='';
+        this.course='';
+        this.email='';
+        this.phone='';
+    },
       error: (err: any) =>{
         this.errors = err.error.errors;
         console.log(err.error.errors,'error');
-
+        
       }
     });
   }
