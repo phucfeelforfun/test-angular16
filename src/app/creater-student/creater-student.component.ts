@@ -52,10 +52,14 @@ export class CreaterStudentComponent implements OnInit {
   toggleSaleEventVisibility() {
     this.isSaleEventVisible = !this.isSaleEventVisible;
     console.log(this.isSaleEventVisible);
-    const fromdateControl = this.formData.get('fromdate');
-    if (fromdateControl) {
-      fromdateControl.updateValueAndValidity();
+    const fieldsToUpdate = ['fromdate', 'enddate', 'per'];
+
+  fieldsToUpdate.forEach(field => {
+    const control = this.formData.get(field);
+    if (control) {
+      control.updateValueAndValidity(); // Cập nhật trạng thái hợp lệ của field
     }
+  });
   }
   constructor(
     private fb: FormBuilder,
@@ -125,10 +129,10 @@ export class CreaterStudentComponent implements OnInit {
     console.log(this.formData.value);
     console.log(this.isLoading);
 
-
+    
     this.submitted = true;
 
-console.log(this.formData.value.preview);
+    console.log(this.formData.invalid);
     if (this.formData.invalid) {
       return;
     }
