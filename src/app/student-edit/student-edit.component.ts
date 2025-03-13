@@ -40,12 +40,13 @@ export class StudentEditComponent implements OnInit {
       this.isLoading = false
       this.formData = this.fb.group({
         name: [this.student.name, [Validators.required]],
-        email: [this.student.email, [Validators.required, Validators.email]],
+        number: [this.student.num, [Validators.required]],
+        price: [this.student.price,[Validators.required]],
       });
     })
 
   }
-
+  
 
   get f(): { [key: string]: AbstractControl } {
     return this.formData.controls;
@@ -61,7 +62,8 @@ export class StudentEditComponent implements OnInit {
 
       var inputData = {
         name: this.formData.value.name,
-        email: this.formData.value.email,
+        num: this.formData.value.number,
+        price: this.formData.value.price,
       }
       console.log(inputData);
 

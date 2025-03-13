@@ -18,7 +18,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { vi_VN } from 'ng-zorro-antd/i18n';
+import { vi_VN, en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { IconsProviderModule } from './icons-provider.module';
@@ -33,6 +33,7 @@ import { HomeHomenameComponent } from './home/home-homename/home-homename.compon
 import { SortProdComponent } from './sort-prod/sort-prod.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import en from '@angular/common/locales/en';
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
 registerLocaleData(vi);

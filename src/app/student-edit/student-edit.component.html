@@ -25,18 +25,37 @@
               <div *ngIf="f['name'].errors['required']">Fullname is required</div>
             </div>
           </div>
-
-
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Email</label>
-            <input type="text" class="form-control" formControlName="email" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" name="email">
-            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-              <div *ngIf="f['email'].errors['required']">Email is required</div>
-              <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            <label for="exampleInputEmail1" class="form-label">number</label>
+            <input type="text" formControlName="number" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['number'].errors }" />
+            <div *ngIf="submitted && f['number'].errors" class="invalid-feedback">
+              <div *ngIf="f['number'].errors['required']">Fullname is required</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Price</label>
+            <input type="text" formControlName="price" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
+            <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+              <div *ngIf="f['price'].errors['required']">Fullname is required</div>
             </div>
           </div>
 
+
+          
+          <!-- <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">price</label>
+            <input type="text" class="form-control" formControlName="price" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" name="price">
+            
+          </div>
+<div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Number</label>
+            <input type="text" class="form-control" formControlName="number" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['number'].errors }" name="number">
+            
+          </div> -->
           <button type="submit" class="btn btn-primary">Update</button>
 
         </form>

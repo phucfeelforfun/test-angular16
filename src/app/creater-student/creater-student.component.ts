@@ -87,7 +87,7 @@ export class CreaterStudentComponent implements OnInit {
       name: ['', [Validators.required]],
       price: [null, [Validators.required]],
       num: ['', [Validators.required]],
-      preview:['',[Validators.required]],
+      preview:[''],
 
       fromdate: ['', [this.isFromdateRequired.bind(this)]],
       enddate: ['', [this.isFromdateRequired.bind(this)]],
